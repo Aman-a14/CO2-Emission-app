@@ -1,3 +1,5 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:co2_emission_final/live_data.dart';
 import 'package:co2_emission_final/wrapper.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +67,7 @@ class _GraphPhageState extends State<GraphPhage> {
                 title: const Text('Live Data'),
                 onTap: (){
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: ((context) => LiveDataPage()))
+                    MaterialPageRoute(builder: ((context) => const LiveDataPage()))
                     );
                 },
               ),
@@ -75,7 +77,7 @@ class _GraphPhageState extends State<GraphPhage> {
                 title: const Text('Previous Data'),
                 onTap: (){
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: ((context) => GraphPhage()))
+                    MaterialPageRoute(builder: ((context) => const GraphPhage()))
                     );
                 },
               )

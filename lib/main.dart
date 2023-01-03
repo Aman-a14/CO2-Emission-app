@@ -11,7 +11,7 @@ void main() async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
   runApp(
     MaterialApp(
-      home: prefs.containsKey('name') == true? AuthPage()
+      home: prefs.containsKey('name') == true? const AuthPage()
         :RegisterPage()
     )
   );

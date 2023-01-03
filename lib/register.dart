@@ -1,3 +1,5 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:co2_emission_final/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
@@ -48,7 +50,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void discoverDevices(FlutterBluetoothSerial bluetoothInst) async{
     await bluetoothInst.startDiscovery().listen((result) { 
-      print(result.device.name);
       if(result.device.name == 'HC-05'){
         setState(() {
           widget.discover = false;
@@ -110,6 +111,5 @@ class _RegisterPageState extends State<RegisterPage> {
     prefs.setDouble('dailySamples', 0);
     prefs.setInt('dailyCount', 0);
     prefs.setString('fullVal',"0,0");
-    print('Set data $name');
   }
 }

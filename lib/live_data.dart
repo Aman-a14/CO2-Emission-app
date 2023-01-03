@@ -1,3 +1,5 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -50,7 +52,6 @@ class _LiveDataPageState extends State<LiveDataPage> {
     setState(() {
       address = prefs.getString('address')!;
     });
-    print('address: $address');
   }
 
   Map<String, dynamic> full_data = {};
@@ -171,7 +172,6 @@ class _LiveDataPageState extends State<LiveDataPage> {
 
   void recieve_data(CollectionReference collection) async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    print(address);
     BluetoothConnection connection = await BluetoothConnection.toAddress(prefs.getString('address'));
     final SharedPreferences pref = await SharedPreferences.getInstance();
 
@@ -189,7 +189,6 @@ class _LiveDataPageState extends State<LiveDataPage> {
         (Uint8List data) {
           data.forEach((element) { 
             sendData(connection);
-            print(element);
             String decoded_letter = ascii.decode([element]);
             if(full_val.length < 16){
               full_val += decoded_letter;
@@ -204,7 +203,6 @@ class _LiveDataPageState extends State<LiveDataPage> {
 
                 dailyAverage();
                 todayAverage();
-                print(full_val);
                 collection.doc('data').update(full_data);
                 collection.doc('daily_data').update(dailyMap);
                 collection.doc('today').set(todayMap);
@@ -227,7 +225,6 @@ class _LiveDataPageState extends State<LiveDataPage> {
 void sendData(BluetoothConnection connection) async{
   connection.output.add(Uint8List.fromList([1]));
   await connection.output.allSent;
-  print('Sent');
 }
 
   List<CO2Data> chartData(String val){

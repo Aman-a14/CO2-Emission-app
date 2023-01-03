@@ -51,7 +51,6 @@ class _HomePageState extends State<HomePage> {
 
       filterEff = ((val2-val1)/val1 * 100).abs();
     });
-    print(filterEff);
   }
 
   void initState(){
